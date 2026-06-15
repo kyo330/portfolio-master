@@ -1,10 +1,10 @@
 """
-Portfolio — Priyadharshini Ramesh Kumar
+Portfolio: Priyadharshini Ramesh Kumar
 Data Scientist & Machine Learning Engineer
 
 A single-file Streamlit portfolio. Edit the data blocks below (SOCIAL,
 PROJECT_LINKS, EXPERIENCE, PROJECTS, SKILLS, EDUCATION, AWARDS) to update
-content — the layout, styling, and rendering logic do not need to change.
+content. The layout, styling, and rendering logic do not need to change.
 """
 
 import streamlit as st
@@ -17,7 +17,7 @@ st.set_page_config(
 )
 
 # ════════════════════════════════════════════════════════════════════════
-# 🔗 EDIT ME — personal links, resume, and project URLs
+# 🔗 EDIT ME: personal links, resume, and project URLs
 # ════════════════════════════════════════════════════════════════════════
 SOCIAL = {
     "email": "mailto:priyadarshini01.r@gmail.com",
@@ -45,11 +45,11 @@ PROJECT_LINKS = {
 # ════════════════════════════════════════════════════════════════════════
 NAME = "Priyadharshini Ramesh Kumar"
 ROLE = "Data Scientist & Machine Learning Engineer"
-LOCATION = "College Station, TX"
+LOCATION = "Chennai, TN, India"
 
 TAGLINE = (
-    "I build systems that turn messy, real-world signals — satellite lightning data, "
-    "electricity markets, a single RGB photo — into models and pipelines people can "
+    "I build systems that turn messy, real-world signals, like satellite lightning data, "
+    "electricity markets, and a single RGB photo, into models and pipelines people can "
     "actually trust and act on."
 )
 
@@ -57,13 +57,13 @@ ABOUT = """
 I'm a data scientist with an M.S. in Data Science from <strong>Texas A&amp;M University</strong>
 (GPA 3.91/4.00) and a B.E. in Computer Science &amp; Engineering from
 <strong>Anna University, MIT Campus</strong>. My work sits at the intersection of
-machine learning, geospatial analytics, and large-scale data engineering — from
-clustering extreme lightning events in satellite data, to building safety-critical
-RAG pipelines for oil &amp; gas, to reconstructing 3D scenes from a single photo.
+machine learning, geospatial analytics, and large-scale data engineering, spanning
+clustering extreme lightning events in satellite data, building safety-critical
+RAG pipelines for oil &amp; gas, and reconstructing 3D scenes from a single photo.
 <br><br>
 What pulls all of it together is a genuine curiosity about <em>how things work</em> and a
 stubborn insistence that a model's output should be interpretable, reliable, and
-genuinely useful to the person on the other end — whether that's an atmospheric
+genuinely useful to the person on the other end, whether that's an atmospheric
 scientist, a marketing team, or a safety auditor. I'm happiest when I'm deep in a
 notebook, a dashboard, or a half-broken pipeline at 11pm trying to figure out why
 the numbers don't quite add up yet.
@@ -84,9 +84,9 @@ EXPERIENCE = [
             "Built a PDF ingestion pipeline for a safety-critical RAG system used in oil &amp; gas "
             "operations, turning technical and regulatory documents into structured, traceable "
             "chunks so every LLM response could be audited back to its source.",
-            "Refactored the system into a clean, modular Python package — typed dataclasses, "
+            "Refactored the system into a clean, modular Python package (typed dataclasses, "
             "parallel UUID-based ingestion to prevent collisions, atomic writes, structured "
-            "logging, and a full unit test suite — to meet the reliability bar required for "
+            "logging, and a full unit test suite) to meet the reliability bar required for "
             "regulated production environments.",
         ],
     },
@@ -96,12 +96,12 @@ EXPERIENCE = [
         "location": "College Station, TX",
         "dates": "Aug 2024 – Jan 2026",
         "bullets": [
-            "Designed clustering pipelines — DBSCAN, hierarchical, sequential, and graph-based — "
+            "Designed clustering pipelines (DBSCAN, hierarchical, sequential, and graph-based) "
             "to analyze large-scale GOES GLM satellite sensor data, sharpening how the team "
             "identified and characterized extreme lightning events.",
             "Built interactive geospatial dashboards in Python, Leaflet, and GeoPandas so "
             "researchers could explore lightning frequency, altitude, and spatial clusters "
-            "visually — no script-running required for routine exploration.",
+            "visually, without needing to run scripts for routine exploration.",
             "Worked closely with atmospheric scientists to pressure-test assumptions and sharpen "
             "evaluation metrics, keeping the analysis focused on questions that genuinely "
             "mattered to the research.",
@@ -114,7 +114,7 @@ EXPERIENCE = [
         "dates": "Feb 2024 – Apr 2024",
         "bullets": [
             "Conducted data discovery, cleaning, and preprocessing on global supply-chain "
-            "datasets — including trade flow and commodity data — using Python, R, and SQL.",
+            "datasets, including trade flow and commodity data, using Python, R, and SQL.",
             "Developed graph-based dependency models, including a 3-node semiconductor supply "
             "chain analysis, to study systemic risk propagation.",
             "Applied probabilistic and statistical modeling to evaluate uncertainty and "
@@ -129,8 +129,8 @@ EXPERIENCE = [
         "bullets": [
             "Curated a labeled dataset of 26 Indian Sign Language gestures from video footage "
             "using Python and OpenCV, extracting per-frame features for reproducible training.",
-            "Trained and systematically compared CNN architectures — including VGG16 with "
-            "transfer learning — on accuracy, loss curves, and per-class metrics to select the "
+            "Trained and systematically compared CNN architectures, including VGG16 with "
+            "transfer learning, on accuracy, loss curves, and per-class metrics to select the "
             "best-performing sign language recognition model.",
             "Awarded the TIH-IoT CHANAKYA Fellowship for contributions to this AI-based sign "
             "language recognition research.",
@@ -145,8 +145,8 @@ PROJECTS = [
         "tags": ["Python", "Streamlit", "scikit-learn", "Plotly", "Groq API"],
         "description": (
             "A six-tab interactive dashboard analyzing four years of hourly Spanish "
-            "electricity market data (~35K records) — day-ahead prices, generation mix, "
-            "and demand. Joined grid data with population-weighted city weather, modeled "
+            "electricity market data (~35K records), covering day-ahead prices, generation "
+            "mix, and demand. Joined grid data with population-weighted city weather, modeled "
             "demand with heating/cooling degree days, and shipped a next-day demand "
             "forecast at roughly 6% MAPE. Built a day-ahead/spot trading signal engine "
             "backtested across ~7,000 trades, plus a live pipeline that turns scraped "
@@ -155,14 +155,14 @@ PROJECTS = [
     },
     {
         "key": "depthforge",
-        "title": "DepthForge — Monocular 3D Reconstruction",
+        "title": "DepthForge: Monocular 3D Reconstruction",
         "tags": ["PyTorch", "GLPN / DPT", "Open3D", "Hugging Face Spaces"],
         "description": (
             "A full depth-to-3D pipeline that takes a single RGB photo, runs it through a "
             "transformer depth model (GLPN-NYU or Intel DPT-Large), back-projects the depth "
             "map into a point cloud, and reconstructs a mesh via Poisson surface "
-            "reconstruction. Added automated mesh-quality checks — manifold, watertight, "
-            "surface area, volume — and a side-by-side GLPN vs. DPT comparison across indoor "
+            "reconstruction. Added automated mesh-quality checks (manifold, watertight, "
+            "surface area, volume) and a side-by-side GLPN vs. DPT comparison across indoor "
             "and outdoor scenes. Deployed on Hugging Face Spaces with a consent gate, EXIF "
             "privacy checks, and PLY/OBJ/STL export."
         ),
@@ -172,13 +172,13 @@ PROJECTS = [
         "title": "Multimodal Vision + Audio Digit Classifier",
         "tags": ["PyTorch", "CNN", "Optuna", "t-SNE"],
         "description": (
-            "A dual-stream neural network from scratch — a Conv2D encoder for handwritten "
-            "digit images paired with a 1D CNN encoder for spoken digit audio — fused at the "
-            "embedding level into a shared classification head, reaching 97.9% test accuracy "
-            "and 97.8% macro F1 across 10 classes. Ran a joint Optuna hyperparameter search "
-            "across both modalities, then used t-SNE + KMeans on the fused embeddings to "
-            "confirm the fusion strategy genuinely improved class separation. Trained on a "
-            "Tesla P100 with stratified splits and early stopping."
+            "A dual-stream neural network from scratch, pairing a Conv2D encoder for "
+            "handwritten digit images with a 1D CNN encoder for spoken digit audio, fused "
+            "at the embedding level into a shared classification head, reaching 97.9% test "
+            "accuracy and 97.8% macro F1 across 10 classes. Ran a joint Optuna "
+            "hyperparameter search across both modalities, then used t-SNE + KMeans on the "
+            "fused embeddings to confirm the fusion strategy genuinely improved class "
+            "separation. Trained on a Tesla P100 with stratified splits and early stopping."
         ),
     },
     {
@@ -189,22 +189,22 @@ PROJECTS = [
             "A five-page interactive BI dashboard over a 2,000-customer dataset, giving "
             "non-technical business users a self-serve way to filter by age, income, and "
             "gender with live-updating visualizations. Used KMeans clustering on income, "
-            "spending, and age to segment customers into four actionable personas — Premium "
-            "Loyalists, Untapped High-Earners, Aspirational Spenders, and Budget Conscious — "
+            "spending, and age to segment customers into four actionable personas: Premium "
+            "Loyalists, Untapped High-Earners, Aspirational Spenders, and Budget Conscious, "
             "and translated each cluster into prioritized, plain-language marketing "
             "recommendations."
         ),
     },
     {
         "key": "thunderstorm",
-        "title": "Visualizations of Thunderstorm — Capstone Project",
+        "title": "Visualizations of Thunderstorm: Capstone Project",
         "tags": ["Python", "Folium", "Geospatial Analytics"],
         "description": (
             "An interactive geospatial analytics system that converts large-scale lightning "
             "and thunderstorm datasets into dynamic, altitude-encoded map visualizations. "
             "Applied data filtering and aggregation to support exploratory analysis of "
             "extreme weather events, and built spatiotemporal tools to classify lightning "
-            "strikes — turning static datasets into an interactive Folium map researchers "
+            "strikes, turning static datasets into an interactive Folium map researchers "
             "can zoom and explore directly."
         ),
     },
@@ -215,10 +215,11 @@ PROJECTS = [
         "description": (
             "An interactive Tableau dashboard analyzing 20,000+ tracks across 2,000+ artists, "
             "comparing Spotify streams against YouTube views, likes, and comments to surface "
-            "cross-platform performance patterns. Engineered derived metrics — engagement "
-            "rate, stream-to-view ratio, audio-feature tiering via LOD calculations — after "
-            "cleaning the 20K-row dataset in Pandas, then extended the analysis with a "
-            "GitHub Actions cron job pulling daily Spotify artist popularity data."
+            "cross-platform performance patterns. Engineered derived metrics, including "
+            "engagement rate, stream-to-view ratio, and audio-feature tiering via LOD "
+            "calculations, after cleaning the 20K-row dataset in Pandas, then extended the "
+            "analysis with a GitHub Actions cron job pulling daily Spotify artist popularity "
+            "data."
         ),
     },
 ]
@@ -230,7 +231,7 @@ EARLIER_PROJECTS = [
         "description": (
             "Applied statistical modeling and feature engineering to identify correlations "
             "among environmental variables, and built ML models (R² = 0.87) to predict air "
-            "quality levels from sensor data — evaluating feature importance for "
+            "quality levels from sensor data, while evaluating feature importance for "
             "interpretability."
         ),
     },
@@ -765,7 +766,7 @@ st.markdown(marquee_html(), unsafe_allow_html=True)
 # 🙋 ABOUT
 # ════════════════════════════════════════════════════════════════════════
 st.markdown('<div id="about" class="section-anchor"></div>', unsafe_allow_html=True)
-st.markdown('<div class="section-eyebrow">// 01 — About</div>', unsafe_allow_html=True)
+st.markdown('<div class="section-eyebrow">// 01 · About</div>', unsafe_allow_html=True)
 st.markdown('<div class="section-title">A bit about me</div>', unsafe_allow_html=True)
 st.markdown(f'<div class="about-text">{ABOUT}</div>', unsafe_allow_html=True)
 
@@ -775,7 +776,7 @@ st.markdown("<br>", unsafe_allow_html=True)
 # 💼 EXPERIENCE
 # ════════════════════════════════════════════════════════════════════════
 st.markdown('<div id="experience" class="section-anchor"></div>', unsafe_allow_html=True)
-st.markdown('<div class="section-eyebrow">// 02 — Experience</div>', unsafe_allow_html=True)
+st.markdown('<div class="section-eyebrow">// 02 · Experience</div>', unsafe_allow_html=True)
 st.markdown('<div class="section-title">Where I\'ve been building</div>', unsafe_allow_html=True)
 st.markdown(timeline_html(), unsafe_allow_html=True)
 
@@ -785,7 +786,7 @@ st.markdown("<br><br>", unsafe_allow_html=True)
 # 🚀 PROJECTS
 # ════════════════════════════════════════════════════════════════════════
 st.markdown('<div id="projects" class="section-anchor"></div>', unsafe_allow_html=True)
-st.markdown('<div class="section-eyebrow">// 03 — Projects</div>', unsafe_allow_html=True)
+st.markdown('<div class="section-eyebrow">// 03 · Projects</div>', unsafe_allow_html=True)
 st.markdown('<div class="section-title">Things I\'ve built</div>', unsafe_allow_html=True)
 
 cols = st.columns(2)
@@ -809,7 +810,7 @@ st.markdown("<br>", unsafe_allow_html=True)
 # 🛠️ SKILLS
 # ════════════════════════════════════════════════════════════════════════
 st.markdown('<div id="skills" class="section-anchor"></div>', unsafe_allow_html=True)
-st.markdown('<div class="section-eyebrow">// 04 — Skills</div>', unsafe_allow_html=True)
+st.markdown('<div class="section-eyebrow">// 04 · Skills</div>', unsafe_allow_html=True)
 st.markdown('<div class="section-title">My toolbox</div>', unsafe_allow_html=True)
 
 skill_cols = st.columns(2)
@@ -829,7 +830,7 @@ st.markdown("<br>", unsafe_allow_html=True)
 # 🎓 EDUCATION
 # ════════════════════════════════════════════════════════════════════════
 st.markdown('<div id="education" class="section-anchor"></div>', unsafe_allow_html=True)
-st.markdown('<div class="section-eyebrow">// 05 — Education</div>', unsafe_allow_html=True)
+st.markdown('<div class="section-eyebrow">// 05 · Education</div>', unsafe_allow_html=True)
 st.markdown('<div class="section-title">Academic background</div>', unsafe_allow_html=True)
 
 edu_cols = st.columns(2)
@@ -849,7 +850,7 @@ st.markdown("<br><br>", unsafe_allow_html=True)
 # 🏆 AWARDS
 # ════════════════════════════════════════════════════════════════════════
 st.markdown('<div id="awards" class="section-anchor"></div>', unsafe_allow_html=True)
-st.markdown('<div class="section-eyebrow">// 06 — Recognition</div>', unsafe_allow_html=True)
+st.markdown('<div class="section-eyebrow">// 06 · Recognition</div>', unsafe_allow_html=True)
 st.markdown('<div class="section-title">Awards &amp; publications</div>', unsafe_allow_html=True)
 
 award_cols = st.columns(2)
@@ -870,7 +871,7 @@ st.markdown("<br><br>", unsafe_allow_html=True)
 # ✉️ CONTACT
 # ════════════════════════════════════════════════════════════════════════
 st.markdown('<div id="contact" class="section-anchor"></div>', unsafe_allow_html=True)
-st.markdown('<div class="section-eyebrow">// 07 — Contact</div>', unsafe_allow_html=True)
+st.markdown('<div class="section-eyebrow">// 07 · Contact</div>', unsafe_allow_html=True)
 st.markdown('<div class="section-title">Let\'s build something</div>', unsafe_allow_html=True)
 
 st.markdown(f"""
@@ -878,7 +879,7 @@ st.markdown(f"""
     <h3>Got a problem worth digging into?</h3>
     <p>
         I'm always up for talking about data pipelines, geospatial ML, RAG systems, or
-        why a model's validation curve looks a little too good to be true. Reach out —
+        why a model's validation curve looks a little too good to be true. Reach out,
         I'd love to hear from you.
     </p>
     <div class="contact-links">

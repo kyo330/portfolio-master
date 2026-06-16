@@ -754,42 +754,82 @@ if _current_page == "resume":
         _pdf_bytes = PDF_PATH.read_bytes()
         _b64 = base64.b64encode(_pdf_bytes).decode()
 
-        # Use components.html + JS blob URL — avoids browser data: URI iframe blocks
-        _viewer_html = f"""
-        <!DOCTYPE html>
-        <html>
-        <head>
-        <style>
-            * {{ margin: 0; padding: 0; box-sizing: border-box; }}
-            body {{ background: transparent; }}
-            embed {{
-                display: block;
-                width: 100%;
-                height: 920px;
-                border: none;
-                border-radius: 8px;
-            }}
-        </style>
-        </head>
-        <body>
-        <embed id="pdf-viewer" type="application/pdf" />
-        <script>
-            (function() {{
-                var b64 = '{_b64}';
-                var binary = atob(b64);
-                var bytes = new Uint8Array(binary.length);
-                for (var i = 0; i < binary.length; i++) {{
-                    bytes[i] = binary.charCodeAt(i);
-                }}
-                var blob = new Blob([bytes], {{ type: 'application/pdf' }});
-                var url  = URL.createObjectURL(blob);
-                document.getElementById('pdf-viewer').src = url;
-            }})();
-        </script>
-        </body>
-        </html>
-        """
-        components.html(_viewer_html, height=940, scrolling=False)
+        # PDF.js renders each page to a <canvas> — works in all browsers,
+        # no plugin needed, no blob/data-URI restrictions.
+        _VIEWER_TMPL = """<!DOCTYPE html>
+<html>
+<head>
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { background: #0A0E27; }
+    #loading {
+        color: #00E5FF;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.85rem;
+        text-align: center;
+        padding: 2rem;
+        letter-spacing: 0.1em;
+    }
+    .page-wrap {
+        margin: 0 auto 16px auto;
+        box-shadow: 0 6px 24px rgba(0,0,0,0.5);
+        border-radius: 4px;
+        overflow: hidden;
+        display: block;
+        width: fit-content;
+    }
+    canvas { display: block; }
+</style>
+</head>
+<body>
+<div id="loading">⚡ Loading resume...</div>
+<div id="pdf-container"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script>
+pdfjsLib.GlobalWorkerOptions.workerSrc =
+    'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+var raw = atob('B64_DATA');
+var bytes = new Uint8Array(raw.length);
+for (var i = 0; i < raw.length; i++) bytes[i] = raw.charCodeAt(i);
+
+pdfjsLib.getDocument({ data: bytes }).promise.then(function(pdf) {
+    document.getElementById('loading').style.display = 'none';
+    var container = document.getElementById('pdf-container');
+
+    function renderPage(n) {
+        pdf.getPage(n).then(function(page) {
+            var vp0    = page.getViewport({ scale: 1 });
+            var scale  = (container.clientWidth || 780) / vp0.width;
+            var vp     = page.getViewport({ scale: scale });
+
+            var canvas       = document.createElement('canvas');
+            canvas.width     = vp.width;
+            canvas.height    = vp.height;
+
+            var wrap = document.createElement('div');
+            wrap.className = 'page-wrap';
+            wrap.appendChild(canvas);
+            container.appendChild(wrap);
+
+            page.render({ canvasContext: canvas.getContext('2d'), viewport: vp })
+                .promise.then(function() {
+                    if (n < pdf.numPages) renderPage(n + 1);
+                });
+        });
+    }
+    renderPage(1);
+
+}).catch(function(err) {
+    document.getElementById('loading').textContent = 'Could not load PDF: ' + err.message;
+});
+</script>
+</body>
+</html>"""
+        _viewer_html = _VIEWER_TMPL.replace("B64_DATA", _b64)
+        # height: ~1200px per page × 2 pages + padding
+        components.html(_viewer_html, height=2600, scrolling=True)
 
         st.markdown("<br>", unsafe_allow_html=True)
 

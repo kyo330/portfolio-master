@@ -12,7 +12,7 @@ st.set_page_config(
 # ════════════════════════════════════════════════════════════════════════
 # 📄 RESUME PDF — path relative to app.py in the repo
 # ════════════════════════════════════════════════════════════════════════
-PDF_PATH = "assets/Priyadharshini_Ramesh_Kumar_Resume.pdf"
+PDF_PATH = "https://github.com/kyo330/portfolio-master/blob/main/assets/Priyadharshini_Ramesh_Kumar.pdf"
 RESUME_URL = "?page=resume"   # all resume buttons point here
 
 # ════════════════════════════════════════════════════════════════════════
@@ -31,14 +31,13 @@ SOCIAL = {
 # TODO: replace these "#" placeholders with real GitHub repos / live demo
 # URLs for each project. Set a value to None to hide that button entirely.
 PROJECT_LINKS = {
-    "energy": {"github": "#", "live": "#"},
-    "depthforge": {"github": "#", "live": "#"},
-    "multimodal": {"github": "#", "live": "#"},
-    "customer_intel": {"github": "#", "live": "#"},
-    "thunderstorm": {"github": "#", "live": "#"},
-    "spotify_yt": {"github": "#", "live": "#"},
+    "energy": {"github": "https://github.com/kyo330/SEMD", "live": "https://spain-energy-hourly.streamlit.app"},
+    "depthforge": {"live": "https://huggingface.co/spaces/Tohru127/DepthForge"},
+    "multimodal": {"github": "https://github.com/kyo330/Multimodal-Digits-MNIST"},
+    "customer_intel": {"github": "https://github.com/kyo330/custintelli", "live": "https://customeriltel.streamlit.app"},
+    "thunderstorm": {"github": "https://github.com/kyo330/HLMA-website", "live": "https://hlma-website.streamlit.app"},
+    "spotify_yt": {"github": "https://github.com/kyo330/Spotify", "live": "https://us-east-1.online.tableau.com/#/site/priyadharshinir-62119495e6/views/SpotifyYoutubeCrossPlatformPerformanceAnalysis/PerformanceDashboard?:iid=1"},
 }
-
 # ════════════════════════════════════════════════════════════════════════
 # 📄 CONTENT DATA
 # ════════════════════════════════════════════════════════════════════════

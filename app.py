@@ -1,13 +1,6 @@
-"""
-Portfolio: Priyadharshini Ramesh Kumar
-Data Scientist & Machine Learning Engineer
-
-A single-file Streamlit portfolio. Edit the data blocks below (SOCIAL,
-PROJECT_LINKS, EXPERIENCE, PROJECTS, SKILLS, EDUCATION, AWARDS) to update
-content. The layout, styling, and rendering logic do not need to change.
-"""
-
 import streamlit as st
+import base64
+import os
 
 st.set_page_config(
     page_title="Priyadharshini Ramesh Kumar | Data Scientist & ML Engineer",
@@ -15,6 +8,12 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded",
 )
+
+# ════════════════════════════════════════════════════════════════════════
+# 📄 RESUME PDF — path relative to app.py in the repo
+# ════════════════════════════════════════════════════════════════════════
+PDF_PATH = "assets/Priyadharshini_Ramesh_Kumar_Resume.pdf"
+RESUME_URL = "?page=resume"   # all resume buttons point here
 
 # ════════════════════════════════════════════════════════════════════════
 # 🔗 EDIT ME: personal links, resume, and project URLs
@@ -25,19 +24,19 @@ SOCIAL = {
     "phone": "+1 979 218 2333",
     "linkedin": "https://www.linkedin.com/in/priyadharshini-r330",
     "github": "https://github.com/kyo330",
-    # TODO: point this at a hosted PDF of your resume
-    "resume_pdf": "#",
+    # Resume opens as an in-app tab (see ?page=resume routing below)
+    "resume_pdf": RESUME_URL,
 }
 
 # TODO: replace these "#" placeholders with real GitHub repos / live demo
 # URLs for each project. Set a value to None to hide that button entirely.
 PROJECT_LINKS = {
-    "energy": {"github": "https://github.com/kyo330/SEMD", "live": "https://spain-energy-hourly.streamlit.app"},
-    "depthforge": {"live": "https://huggingface.co/spaces/Tohru127/DepthForge"},
-    "multimodal": {"github": "https://github.com/kyo330/Multimodal-Digits-MNIST"},
-    "customer_intel": {"github": "https://github.com/kyo330/custintelli", "live": "https://customeriltel.streamlit.app"},
-    "thunderstorm": {"github": "https://github.com/kyo330/HLMA-website", "live": "https://hlma-website.streamlit.app"},
-    "spotify_yt": {"github": "https://github.com/kyo330/Spotify", "live": "https://us-east-1.online.tableau.com/#/site/priyadharshinir-62119495e6/views/SpotifyYoutubeCrossPlatformPerformanceAnalysis/PerformanceDashboard?:iid=1"},
+    "energy": {"github": "#", "live": "#"},
+    "depthforge": {"github": "#", "live": "#"},
+    "multimodal": {"github": "#", "live": "#"},
+    "customer_intel": {"github": "#", "live": "#"},
+    "thunderstorm": {"github": "#", "live": "#"},
+    "spotify_yt": {"github": "#", "live": "#"},
 }
 
 # ════════════════════════════════════════════════════════════════════════
@@ -691,6 +690,112 @@ def signal_wave_svg():
 
 
 # ════════════════════════════════════════════════════════════════════════
+# 📍 PAGE ROUTING — ?page=resume shows the embedded resume viewer
+# ════════════════════════════════════════════════════════════════════════
+_current_page = st.query_params.get("page", "main")
+
+if _current_page == "resume":
+
+    # ── Shared sidebar (resume view) ─────────────────────────────────
+    with st.sidebar:
+        st.markdown('<div class="sidebar-avatar">PR</div>', unsafe_allow_html=True)
+        st.markdown(f'<div class="sidebar-name">{NAME}</div>', unsafe_allow_html=True)
+        st.markdown(f'<div class="sidebar-title">{ROLE}</div>', unsafe_allow_html=True)
+        st.markdown("""
+        <div class="sidebar-nav">
+            <a href="/">🏠 &nbsp; Portfolio Home</a>
+            <a href="#resume-top">📄 &nbsp; Resume</a>
+        </div>
+        """, unsafe_allow_html=True)
+        st.markdown('<div class="sidebar-divider"></div>', unsafe_allow_html=True)
+        st.markdown(f"""
+        <div class="sidebar-socials">
+            <a href="{SOCIAL['github']}" target="_blank">GitHub</a>
+            <a href="{SOCIAL['linkedin']}" target="_blank">LinkedIn</a>
+            <a href="{SOCIAL['email']}">Email</a>
+        </div>
+        """, unsafe_allow_html=True)
+        st.markdown(
+            '<div class="sidebar-foot">📍 ' + LOCATION + '<br>Built with Python + Streamlit</div>',
+            unsafe_allow_html=True,
+        )
+
+    # ── Resume viewer ────────────────────────────────────────────────
+    st.markdown('<div id="resume-top" class="section-anchor"></div>', unsafe_allow_html=True)
+    st.markdown('<div class="section-eyebrow">// Resume</div>', unsafe_allow_html=True)
+
+    r_col1, r_col2 = st.columns([3, 1])
+    with r_col1:
+        st.markdown(f'<div class="section-title">{NAME}</div>', unsafe_allow_html=True)
+    with r_col2:
+        st.markdown("""
+        <div style="display:flex; justify-content:flex-end; align-items:center; height:100%; padding-top:0.6rem;">
+        """, unsafe_allow_html=True)
+        st.markdown(f'<a class="btn btn-secondary" href="/">← Back to Portfolio</a>',
+                    unsafe_allow_html=True)
+        st.markdown("</div>", unsafe_allow_html=True)
+
+    st.markdown("<br>", unsafe_allow_html=True)
+
+    _pdf_exists = os.path.exists(PDF_PATH)
+    if _pdf_exists:
+        with open(PDF_PATH, "rb") as _f:
+            _b64 = base64.b64encode(_f.read()).decode()
+
+        st.markdown(f"""
+        <div style="
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.25rem;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+        ">
+            <iframe
+                src="data:application/pdf;base64,{_b64}"
+                width="100%"
+                height="960"
+                style="border: none; border-radius: 8px; display: block;"
+                title="Priyadharshini Ramesh Kumar Resume"
+            ></iframe>
+        </div>
+        """, unsafe_allow_html=True)
+
+        st.markdown("<br>", unsafe_allow_html=True)
+        st.markdown(f"""
+        <div style="text-align:center;">
+            <a class="btn btn-primary"
+               href="data:application/pdf;base64,{_b64}"
+               download="Priyadharshini_Ramesh_Kumar_Resume.pdf">
+               ⬇ Download PDF
+            </a>
+            &nbsp;&nbsp;
+            <a class="btn btn-secondary" href="/">← Back to Portfolio</a>
+        </div>
+        """, unsafe_allow_html=True)
+
+    else:
+        st.markdown(f"""
+        <div class="contact-card" style="text-align:left; padding: 2rem;">
+            <h3>📄 Resume PDF not found</h3>
+            <p>
+                Push <code>assets/Priyadharshini_Ramesh_Kumar_Resume.pdf</code>
+                to the repo root so Streamlit can find and embed it here.
+                Once it's there, this page will render the full resume inline.
+            </p>
+            <a class="btn btn-secondary" href="/">← Back to Portfolio</a>
+        </div>
+        """, unsafe_allow_html=True)
+
+    st.markdown(f"""
+    <div class="footer-note">
+        © 2026 {NAME} &nbsp;·&nbsp;
+        <a href="/">Back to Portfolio ↑</a>
+    </div>
+    """, unsafe_allow_html=True)
+
+    st.stop()   # don't render the portfolio below
+
+# ════════════════════════════════════════════════════════════════════════
 # 🧭 SIDEBAR
 # ════════════════════════════════════════════════════════════════════════
 with st.sidebar:
@@ -718,7 +823,7 @@ with st.sidebar:
         <a href="{SOCIAL['github']}" target="_blank">GitHub</a>
         <a href="{SOCIAL['linkedin']}" target="_blank">LinkedIn</a>
         <a href="{SOCIAL['email']}">Email</a>
-        <a href="{SOCIAL['resume_pdf']}" target="_blank">Resume ↓</a>
+        <a href="?page=resume">Resume 📄</a>
     </div>
     """, unsafe_allow_html=True)
 
@@ -749,7 +854,7 @@ st.markdown(f"""
 <div class="cta-row fade-in-2">
     <a class="btn btn-primary" href="#projects">🚀 View Projects</a>
     <a class="btn btn-secondary" href="#contact">✉️ Get in Touch</a>
-    <a class="btn btn-secondary" href="{SOCIAL['resume_pdf']}" target="_blank">📄 Resume</a>
+    <a class="btn btn-secondary" href="?page=resume">📄 Resume</a>
 </div>
 """, unsafe_allow_html=True)
 
@@ -886,7 +991,7 @@ st.markdown(f"""
         <a class="btn btn-primary" href="{SOCIAL['email']}">✉️ {SOCIAL['email_display']}</a>
         <a class="btn btn-secondary" href="{SOCIAL['linkedin']}" target="_blank">in LinkedIn</a>
         <a class="btn btn-secondary" href="{SOCIAL['github']}" target="_blank">⌥ GitHub</a>
-        <a class="btn btn-secondary" href="{SOCIAL['resume_pdf']}" target="_blank">📄 Resume</a>
+        <a class="btn btn-secondary" href="?page=resume">📄 Resume</a>
     </div>
 </div>
 """, unsafe_allow_html=True)

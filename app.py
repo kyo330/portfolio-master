@@ -828,11 +828,8 @@ pdfjsLib.getDocument({ data: bytes }).promise.then(function(pdf) {
 </body>
 </html>"""
         _viewer_html = _VIEWER_TMPL.replace("B64_DATA", _b64)
-        # height: ~1200px per page × 2 pages + padding
-        components.html(_viewer_html, height=2600, scrolling=True)
 
-        st.markdown("<br>", unsafe_allow_html=True)
-
+        # ── Download + back row (above viewer so always visible) ──────
         dl_col, back_col, _ = st.columns([1, 1, 3])
         with dl_col:
             st.download_button(
@@ -847,6 +844,11 @@ pdfjsLib.getDocument({ data: bytes }).promise.then(function(pdf) {
                 '<a class="btn btn-secondary" href="/" style="display:block;text-align:center;padding:.6rem 0;">← Portfolio</a>',
                 unsafe_allow_html=True,
             )
+
+        st.markdown("<br>", unsafe_allow_html=True)
+
+        # height: ~1200px per page × 2 pages + padding
+        components.html(_viewer_html, height=2600, scrolling=True)
 
     else:
         st.markdown(f"""

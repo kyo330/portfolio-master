@@ -12,7 +12,7 @@ st.set_page_config(
 )
 
 # ════════════════════════════════════════════════════════════════════════
-# 📄 RESUME PDF — resolved relative to app.py regardless of working dir
+# 📄 RESUME PDF: resolved relative to app.py regardless of working dir
 # ════════════════════════════════════════════════════════════════════════
 _APP_DIR = pathlib.Path(__file__).parent
 PDF_PATH = _APP_DIR / "assets" / "Priyadharshini_Ramesh_Kumar.pdf"
@@ -24,7 +24,7 @@ RESUME_URL = "?page=resume"   # all resume buttons point here
 SOCIAL = {
     "email": "mailto:priyadarshini01.r@gmail.com",
     "email_display": "priyadarshini01.r@gmail.com",
-    "phone": "+1 979 218 2333",
+    "phone": "+91 89760 66703",
     "linkedin": "https://www.linkedin.com/in/priyadharshini-r330",
     "github": "https://github.com/kyo330",
     # Resume opens as an in-app tab (see ?page=resume routing below)
@@ -40,6 +40,8 @@ PROJECT_LINKS = {
     "customer_intel": {"github": "https://github.com/kyo330/custintelli", "live": "https://customeriltel.streamlit.app"},
     "thunderstorm": {"github": "https://github.com/kyo330/HLMA-website", "live": "https://hlma-website.streamlit.app"},
     "spotify_yt": {"github": "https://github.com/kyo330/Spotify", "live": "https://us-east-1.online.tableau.com/#/site/priyadharshinir-62119495e6/views/SpotifyYoutubeCrossPlatformPerformanceAnalysis/PerformanceDashboard?:iid=1"},
+    "hyperspectral": {"github": "https://github.com/kyo330/Hyperspectral-Image-Encryption-and-Decryption"},
+    "smart_cabin": {"paper": "https://link.springer.com/chapter/10.1007/978-981-99-7622-5_20"},
 }
 
 # ════════════════════════════════════════════════════════════════════════
@@ -50,28 +52,31 @@ ROLE = "Data Scientist & Machine Learning Engineer"
 LOCATION = "Chennai, TN, India"
 
 TAGLINE = (
-    "I build systems that turn messy, real-world signals, like satellite lightning data, "
-    "electricity markets, and a single RGB photo, into models and pipelines people can "
-    "actually trust and act on."
+    "I build things like RAG pipelines that make oil & gas documents auditable, "
+    "algorithms that stitch satellite data into lightning flashes, and a pipeline "
+    "that turns one RGB photo into a 3D mesh. I like problems messy enough to be "
+    "interesting, and I'm always up for learning something new, so if you're "
+    "building something too, let's talk!"
 )
 
 ABOUT = """
 I'm a data scientist with an M.S. in Data Science from <strong>Texas A&amp;M University</strong>
 (GPA 3.91/4.00) and a B.E. in Computer Science &amp; Engineering from
-<strong>Anna University, MIT Campus</strong>. My work sits at the intersection of
-machine learning, geospatial analytics, and large-scale data engineering, spanning
-clustering extreme lightning events in satellite data, building safety-critical
-RAG pipelines for oil &amp; gas, and reconstructing 3D scenes from a single photo.
+<strong>Anna University, MIT Campus</strong>. My work spans machine learning,
+geospatial analytics, and large-scale data engineering, clustering extreme lightning
+events in satellite data, building safety-critical RAG pipelines for oil &amp; gas, and
+reconstructing 3D scenes from a single photo, and honestly, I enjoy every bit of the
+range.
 <br><br>
-What pulls all of it together is a genuine curiosity about <em>how things work</em> and a
-stubborn insistence that a model's output should be interpretable, reliable, and
-genuinely useful to the person on the other end, whether that's an atmospheric
-scientist, a marketing team, or a safety auditor. I'm happiest when I'm deep in a
-notebook, a dashboard, or a half-broken pipeline at 11pm trying to figure out why
-the numbers don't quite add up yet.
+I learn best by doing. Hand me a new dataset, a new tool, or a domain I've never
+touched before, and I'll happily lose a weekend figuring out how it all fits
+together. I'm currently <strong>open to new data science and ML engineering
+opportunities</strong>, and always genuinely excited to connect, whether that's about
+a role, a collaboration, or just a good problem worth digging into. If you're
+working on something interesting, <em>I'd love to hear about it</em>.
 """
 
-CURRENTLY_EXPLORING = [
+CURRENTLY_LEARNING = [
     "Agentic AI", "RAG at scale", "Geospatial ML", "3D scene understanding",
     "MLOps", "LLM evaluation", "Causal inference", "Edge deployment",
 ]
@@ -83,13 +88,18 @@ EXPERIENCE = [
         "location": "Houston, TX",
         "dates": "Jan 2026 – Apr 2026",
         "bullets": [
-            "Built a PDF ingestion pipeline for a safety-critical RAG system used in oil &amp; gas "
-            "operations, turning technical and regulatory documents into structured, traceable "
-            "chunks so every LLM response could be audited back to its source.",
-            "Refactored the system into a clean, modular Python package (typed dataclasses, "
-            "parallel UUID-based ingestion to prevent collisions, atomic writes, structured "
-            "logging, and a full unit test suite) to meet the reliability bar required for "
-            "regulated production environments.",
+            "Built a multi-stage pipeline converting raw oil &amp; gas technical PDFs into a "
+            "structured, RAG-ready knowledge base, domain discovery, GPT-4o scenario "
+            "extraction and playbook generation, batch domain reclassification, and "
+            "rule-based governance validation, processing batches of 3,000+ chunks per run.",
+            "Designed a two-stage GPT-4o extraction process over overlapping ~20k-character "
+            "document windows: detecting operational scenarios per section, then generating "
+            "structured playbooks (trigger conditions, decision points, diagnostics, "
+            "escalation paths) traceable back to source file and page range.",
+            "Built a governance validator enforcing an 8-section compliance checklist via "
+            "regex-based content rules, cutting a batch of 483 chunks down to 256 "
+            "auto-approved, with the remainder routed to rewrite or rejection with itemized "
+            "reasons.",
         ],
     },
     {
@@ -98,15 +108,18 @@ EXPERIENCE = [
         "location": "College Station, TX",
         "dates": "Aug 2024 – Jan 2026",
         "bullets": [
-            "Designed clustering pipelines (DBSCAN, hierarchical, sequential, and graph-based) "
-            "to analyze large-scale GOES GLM satellite sensor data, sharpening how the team "
-            "identified and characterized extreme lightning events.",
-            "Built interactive geospatial dashboards in Python, Leaflet, and GeoPandas so "
-            "researchers could explore lightning frequency, altitude, and spatial clusters "
-            "visually, without needing to run scripts for routine exploration.",
-            "Worked closely with atmospheric scientists to pressure-test assumptions and sharpen "
-            "evaluation metrics, keeping the analysis focused on questions that genuinely "
-            "mattered to the research.",
+            "Implemented and benchmarked four lightning \"flash-stitching\" algorithms "
+            "(sequential threshold-based, DBSCAN, hierarchical agglomerative, "
+            "graph-based/NetworkX) to group raw GLM satellite detections into discrete "
+            "flash events, following the Peterson (2023) spatiotemporal methodology.",
+            "Quantitatively compared algorithm outputs using flash count, megaflash count, "
+            "and extent distributions, then measured pairwise agreement via Adjusted Rand "
+            "Index (e.g. DBSCAN vs. graph-based: 0.875) to identify where methods diverged.",
+            "Built a Streamlit/Leaflet tool parsing raw HLMA sensor exports with a generic "
+            "fallback parser for malformed files, overlaying altitude-tiered lightning "
+            "clusters with NOAA storm-event reports; also supported the group's data "
+            "cleaning and visualization needs, and prototyped FloodSense, an exploratory "
+            "flood-risk tool, at the professor's suggestion.",
         ],
     },
     {
@@ -115,27 +128,36 @@ EXPERIENCE = [
         "location": "College Station, TX",
         "dates": "Feb 2024 – Apr 2024",
         "bullets": [
-            "Conducted data discovery, cleaning, and preprocessing on global supply-chain "
-            "datasets, including trade flow and commodity data, using Python, R, and SQL.",
-            "Developed graph-based dependency models, including a 3-node semiconductor supply "
-            "chain analysis, to study systemic risk propagation.",
-            "Applied probabilistic and statistical modeling to evaluate uncertainty and "
-            "variability across supply-chain systems, supporting reproducible research reporting.",
+            "Conducted initial data discovery on global wood trade-flow data (import/export "
+            "volumes by wood type, production drivers, and downstream industries) before "
+            "the team's focus shifted to causal/probabilistic modeling.",
+            "Built a 3-node Bayesian network analysis of a semiconductor supply chain "
+            "(government funding → chip manufacturing → exports), discretizing each "
+            "variable via empirical CDF-based tercile thresholds and constructing joint "
+            "probability tables to trace how upstream funding risk propagated downstream.",
+            "Ran time-series diagnostics on the underlying data, an Augmented Dickey-Fuller "
+            "test and an ARCH test on regression residuals, to test modeling assumptions, "
+            "then communicated the risk-propagation findings and tradeoffs to non-technical "
+            "stakeholders.",
         ],
     },
     {
-        "role": "Machine Learning Engineer",
-        "company": "IIT Bombay",
-        "location": "Mumbai, India",
+        "role": "Research Assistant",
+        "company": "Anna University, MIT Campus &nbsp;·&nbsp; TIH-IoT CHANAKYA Fellowship (IIT Bombay)",
+        "location": "Chennai, India",
         "dates": "Jan 2022 – Nov 2022",
         "bullets": [
-            "Curated a labeled dataset of 26 Indian Sign Language gestures from video footage "
-            "using Python and OpenCV, extracting per-frame features for reproducible training.",
-            "Trained and systematically compared CNN architectures, including VGG16 with "
-            "transfer learning, on accuracy, loss curves, and per-class metrics to select the "
-            "best-performing sign language recognition model.",
-            "Awarded the TIH-IoT CHANAKYA Fellowship for contributions to this AI-based sign "
-            "language recognition research.",
+            "Curated a labelled dataset of 26 Indian Sign Language gestures from simple- "
+            "and complex-background video footage using Python and OpenCV, extracting "
+            "per-frame features and integrating them into a larger, existing 41-class "
+            "gesture recognition dataset used to train the project's models.",
+            "Built and trained a CNN and a VGG16 transfer-learning model for gesture "
+            "classification, comparing architectures on accuracy, loss curves, and "
+            "per-class precision/recall/F1 across training.",
+            "Part of a four-person student research team under Dr. Ponsy R.K. Sathia "
+            "Bhama, working toward an ISL recognition system for educational-domain signs, "
+            "funded through the TIH-IoT CHANAKYA Fellowship (IIT Bombay's DST-sponsored IoT "
+            "research hub).",
         ],
     },
 ]
@@ -164,23 +186,25 @@ PROJECTS = [
             "transformer depth model (GLPN-NYU or Intel DPT-Large), back-projects the depth "
             "map into a point cloud, and reconstructs a mesh via Poisson surface "
             "reconstruction. Added automated mesh-quality checks (manifold, watertight, "
-            "surface area, volume) and a side-by-side GLPN vs. DPT comparison across indoor "
-            "and outdoor scenes. Deployed on Hugging Face Spaces with a consent gate, EXIF "
-            "privacy checks, and PLY/OBJ/STL export."
+            "surface area, volume) and a side-by-side GLPN vs. DPT sample comparison across "
+            "indoor and outdoor scenes. Deployed on Hugging Face Spaces with a consent "
+            "gate, EXIF privacy checks, and PLY/OBJ/STL export."
         ),
     },
     {
         "key": "multimodal",
-        "title": "Multimodal Vision + Audio Digit Classifier",
-        "tags": ["PyTorch", "CNN", "Optuna", "t-SNE"],
+        "title": "Multimodal Fusion Network (Vision + Audio)",
+        "tags": ["Python", "Keras", "Optuna", "t-SNE"],
         "description": (
-            "A dual-stream neural network from scratch, pairing a Conv2D encoder for "
-            "handwritten digit images with a 1D CNN encoder for spoken digit audio, fused "
-            "at the embedding level into a shared classification head, reaching 97.9% test "
-            "accuracy and 97.8% macro F1 across 10 classes. Ran a joint Optuna "
-            "hyperparameter search across both modalities, then used t-SNE + KMeans on the "
-            "fused embeddings to confirm the fusion strategy genuinely improved class "
-            "separation. Trained on a Tesla P100 with stratified splits and early stopping."
+            "A dual-stream neural network built from scratch, pairing a three-layer Conv2D "
+            "encoder for handwritten digit images with a three-layer Conv1D encoder for "
+            "spoken digit audio, concatenated through a dropout-regularised dense head into "
+            "a 10-class softmax output, reaching 98.9% accuracy and 98.9% F1 on the "
+            "validation split. Tuned both branches jointly with Optuna across filter counts, "
+            "dense units, dropout rate, and learning rate, searching the modalities together "
+            "rather than optimizing each in isolation. Applied t-SNE with KMeans to the "
+            "fused image-audio embeddings to inspect class separation in the learned "
+            "representation space."
         ),
     },
     {
@@ -199,15 +223,19 @@ PROJECTS = [
     },
     {
         "key": "thunderstorm",
-        "title": "Visualizations of Thunderstorm: Capstone Project",
-        "tags": ["Python", "Folium", "Geospatial Analytics"],
+        "title": "4D Thunderstorm Visualization: HLMA Capstone",
+        "tags": ["Python", "Leaflet", "Streamlit", "Team of 2"],
         "description": (
-            "An interactive geospatial analytics system that converts large-scale lightning "
-            "and thunderstorm datasets into dynamic, altitude-encoded map visualizations. "
-            "Applied data filtering and aggregation to support exploratory analysis of "
-            "extreme weather events, and built spatiotemporal tools to classify lightning "
-            "strikes, turning static datasets into an interactive Folium map researchers "
-            "can zoom and explore directly."
+            "An interactive lightning visualization platform built on Houston Lightning "
+            "Mapping Array data (~150,000 new points per minute), replacing a static 2D "
+            "map with altitude-based filtering, colour-coded risk tiers, and zoom/pan "
+            "interaction. Evaluated Bokeh, D3.js, and Leaflet, and prototyped a full 3D view "
+            "before deliberately rejecting it for occlusion, misleading depth perception, "
+            "and rendering cost under high-density real-time data, choosing Leaflet for "
+            "rendering performance and GeoJSON support instead. Defined danger zones from "
+            "lightning frequency and altitude thresholds (below 12 km low-risk, 12–14 km "
+            "overshooting tops, above 14 km severe) so responders could read storm severity "
+            "at a glance. Supervised by Dr. Timothy Logan, Dept. of Atmospheric Sciences."
         ),
     },
     {
@@ -224,36 +252,53 @@ PROJECTS = [
             "data."
         ),
     },
+    {
+        "key": "hyperspectral",
+        "title": "Hyperspectral Image Security via LAB Colour Space Encryption",
+        "tags": ["Python", "PCA", "OpenCV", "B.E. Final Year Project"],
+        "description": (
+            "Designed a chaotic encryption algorithm (pseudorandom chaotic image scrambling) "
+            "for hyperspectral images in the CIELAB colour space, applying channel-independent "
+            "permutation matrices across the L, a, and b channels with per-channel "
+            "pseudorandom generators to improve robustness against statistical and "
+            "brute-force attacks. Built a preprocessing pipeline with PCA (reduced to 30 "
+            "components) and Gaussian filtering to denoise the AVIRIS Indian Pines dataset "
+            "(224 bands, 145×145 px) before encryption, achieving a PSNR of 49.9 dB and SSIM "
+            "of 0.9998 on decrypted images, with encrypted-image histograms showing "
+            "near-uniform distribution."
+        ),
+    },
+    {
+        "key": "smart_cabin",
+        "title": "Secure Smart Cabin Using Optimized Arduino GSM Interface",
+        "tags": ["Arduino", "GSM", "RFID", "IoT", "Team of 4", "Published in Springer"],
+        "description": (
+            "A smart-office IoT system on Arduino UNO integrating six functional modules: "
+            "environmental sensing (temperature, humidity, smoke/gas via DHT11 and MQ-series "
+            "sensors), motion detection (PIR), dual-mode secure entry (RFID + keypad lock), a "
+            "monitoring dashboard, GSM/Wi-Fi connectivity (ESP32), and cloud data storage "
+            "(Adafruit IO, Arduino IoT Cloud). Implemented an IFTTT-based automation layer "
+            "triggering multi-channel emergency alerts (SMS, email, and Discord) on "
+            "smoke/fire detection, alongside a remote dashboard for real-time temperature and "
+            "humidity monitoring and appliance control. This work has been published as a "
+            "peer-reviewed Springer book chapter (DOI: 10.1007/978-981-99-7622-5_20)."
+        ),
+    },
 ]
 
 EARLIER_PROJECTS = [
     {
-        "title": "Air Pollutant Correlation: Uncovering Relationships",
-        "dates": "Aug 2023 – Dec 2023",
+        "title": "Air Pollutant Prediction from Multisensor Data",
+        "dates": "Aug 2023 – Dec 2023 &nbsp;·&nbsp; Team of 3",
         "description": (
-            "Applied statistical modeling and feature engineering to identify correlations "
-            "among environmental variables, and built ML models (R² = 0.87) to predict air "
-            "quality levels from sensor data, while evaluating feature importance for "
-            "interpretability."
-        ),
-    },
-    {
-        "title": "Revamping Hyperspectral Imagery via LAB Color Space Encryption",
-        "dates": "Jan 2023 – Jun 2023",
-        "description": (
-            "Developed a Python-based color space encryption algorithm for hyperspectral "
-            "data, achieving 97% security proximity while preserving data integrity, with "
-            "PCA-based dimensionality reduction and Gaussian filtering for scalability."
-        ),
-    },
-    {
-        "title": "Secure Smart Cabin Using Arduino GSM Interface",
-        "dates": "Jan 2022 – Apr 2022",
-        "description": (
-            "Designed a secure smart cabin with a team, improving environmental control "
-            "efficiency by 30% and cutting energy use by 15% using GSM-based real-time "
-            "monitoring. Published as \"Secure Smart Cabin Using Optimized Arduino GSM "
-            "Interface\" in Springer."
+            "Cleaned a 9,357-row UCI air quality dataset to 6,095 usable rows (missing-value "
+            "handling, a >90%-null column dropped, 846 outliers removed via a conservative "
+            "IQR threshold), then benchmarked six regressors (MLP, Random Forest, Gradient "
+            "Boosting, Linear Regression, Decision Tree, SVR) to predict CO sensor response "
+            "from four co-located pollutant sensors. Tuned an MLP with 5-fold GridSearchCV "
+            "to R&sup2; 0.876 (RMSE 64.9), but recommended Random Forest (R&sup2; 0.872) "
+            "instead for its interpretability via feature importance and lower compute cost; "
+            "the O&#8323; sensor dominated feature importance at ~0.69."
         ),
     },
 ]
@@ -261,39 +306,45 @@ EARLIER_PROJECTS = [
 SKILLS = [
     {
         "icon": "🐍",
-        "category": "Languages &amp; Frameworks",
-        "items": ["Python", "R", "SQL", "Java", "C++", "PyTorch", "TensorFlow", "Keras",
-                   "Scikit-learn", "NumPy", "Pandas"],
+        "category": "Languages",
+        "items": ["Python", "SQL", "R"],
     },
     {
         "icon": "🧠",
         "category": "Machine Learning",
-        "items": ["CNNs", "Transformers", "Transfer Learning", "Multimodal Architectures",
-                   "Monocular Depth Estimation", "Embedding Extraction", "Optuna / HPO"],
+        "items": ["Regression", "Classification", "Ensemble Methods", "Clustering",
+                   "Bayesian Modeling", "Hyperparameter Optimisation"],
     },
     {
-        "icon": "👁️",
-        "category": "Computer Vision &amp; 3D",
-        "items": ["OpenCV", "Open3D", "GLPN", "DPT", "Point Cloud Processing",
-                   "Poisson Surface Reconstruction", "Depth Estimation"],
+        "icon": "🔥",
+        "category": "Deep Learning",
+        "items": ["PyTorch", "TensorFlow/Keras", "CNNs", "Transfer Learning",
+                   "Multimodal Architectures"],
     },
     {
         "icon": "💬",
         "category": "LLMs &amp; NLP",
-        "items": ["HuggingFace Transformers", "RAG Pipelines", "Gradio", "LLM Fine-Tuning",
-                   "Embedding Search"],
+        "items": ["LLM API Integration", "RAG Pipelines", "Prompt Engineering"],
+    },
+    {
+        "icon": "📊",
+        "category": "Statistics",
+        "items": ["Hypothesis Testing", "Time-Series Diagnostics", "Feature Importance Analysis"],
+    },
+    {
+        "icon": "👁️",
+        "category": "Computer Vision",
+        "items": ["OpenCV", "HuggingFace Transformers", "Open3D"],
     },
     {
         "icon": "⚙️",
-        "category": "Data &amp; Engineering",
-        "items": ["Apache Spark", "PySpark", "Hadoop", "PostgreSQL", "MySQL", "Docker",
-                   "ETL Design"],
+        "category": "Data Engineering",
+        "items": ["Data Cleaning", "Preprocessing", "Outlier Detection", "Pipeline Automation"],
     },
     {
         "icon": "☁️",
-        "category": "Cloud &amp; Tools",
-        "items": ["AWS (EC2, S3, RDS, Lambda)", "Git", "Linux", "Hugging Face Spaces",
-                   "Kaggle"],
+        "category": "Visualisation &amp; Deployment",
+        "items": ["Streamlit", "Plotly", "GeoPandas", "Git/GitHub"],
     },
 ]
 
@@ -314,26 +365,20 @@ EDUCATION = [
 
 AWARDS = [
     {
-        "icon": "🏆",
-        "title": "TIH-IoT CHANAKYA Fellowship",
-        "meta": "IIT Bombay",
-        "description": "Awarded for significant contributions to AI-based Indian Sign "
-                        "Language recognition research.",
-    },
-    {
         "icon": "📄",
-        "title": "Springer Publication",
-        "meta": "Secure Smart Cabin Using Optimized Arduino GSM Interface",
-        "description": "Peer-reviewed publication on a secure, GSM-monitored smart cabin "
-                        "system with measurable efficiency gains.",
+        "title": "Published in Springer",
+        "meta": "Secure Smart Cabin Using Optimized Arduino GSM Interface &nbsp;·&nbsp; DOI: 10.1007/978-981-99-7622-5_20",
+        "description": "This work has been published as a peer-reviewed book chapter by "
+                        "Springer, following presentation at a conference on the system's "
+                        "design and results.",
     },
 ]
 
 STATS = [
     {"number": "3.91", "label": "Grad GPA / 4.00"},
-    {"number": "97.9%", "label": "Best Model Accuracy"},
+    {"number": "98.9%", "label": "Best Model Accuracy"},
     {"number": "9", "label": "Featured Projects"},
-    {"number": "1", "label": "Springer Publication"},
+    {"number": "1", "label": "Published Paper (Springer)"},
 ]
 
 # ════════════════════════════════════════════════════════════════════════
@@ -629,6 +674,9 @@ def project_card_html(p):
     if links.get("github"):
         buttons += (f'<a class="btn btn-secondary btn-sm" href="{links["github"]}" '
                      f'target="_blank">⌥ Code</a>')
+    if links.get("paper"):
+        buttons += (f'<a class="btn btn-secondary btn-sm" href="{links["paper"]}" '
+                     f'target="_blank">📄 Paper</a>')
     return (
         '<div class="project-card">'
         f'<div class="project-title">{p["title"]}</div>'
@@ -670,7 +718,7 @@ def skills_html():
 
 def marquee_html():
     items = "".join(
-        f'<div class="marquee-item">⚡ <b>{topic}</b></div>' for topic in CURRENTLY_EXPLORING
+        f'<div class="marquee-item">⚡ <b>{topic}</b></div>' for topic in CURRENTLY_LEARNING
     )
     return f'<div class="marquee-wrap"><div class="marquee-track">{items}{items}</div></div>'
 
@@ -693,7 +741,7 @@ def signal_wave_svg():
 
 
 # ════════════════════════════════════════════════════════════════════════
-# 📍 PAGE ROUTING — ?page=resume shows the embedded resume viewer
+# 📍 PAGE ROUTING: ?page=resume shows the embedded resume viewer
 # ════════════════════════════════════════════════════════════════════════
 _current_page = st.query_params.get("page", "main")
 
@@ -745,7 +793,7 @@ if _current_page == "resume":
         _pdf_bytes = PDF_PATH.read_bytes()
         _b64 = base64.b64encode(_pdf_bytes).decode()
 
-        # PDF.js renders each page to a <canvas> — works in all browsers,
+        # PDF.js renders each page to a <canvas>, works in all browsers,
         # no plugin needed, no blob/data-URI restrictions.
         _VIEWER_TMPL = """<!DOCTYPE html>
 <html>
@@ -907,7 +955,7 @@ st.markdown('<div id="top" class="section-anchor"></div>', unsafe_allow_html=Tru
 
 st.markdown(f"""
 <div class="fade-in">
-    <div class="status-badge"><span class="status-dot"></span> Open to Data Science / ML Engineering roles</div>
+    <div class="status-badge"><span class="status-dot"></span> Open to Data Science / ML roles &amp; new opportunities</div>
     <div class="hero-eyebrow">// Data Scientist · ML Engineer · Builder</div>
     <h1 class="hero-name">{NAME}</h1>
     <div class="hero-role">{ROLE}</div>
@@ -1049,11 +1097,13 @@ st.markdown('<div class="section-title">Let\'s build something</div>', unsafe_al
 
 st.markdown(f"""
 <div class="contact-card">
-    <h3>Got a problem worth digging into?</h3>
+    <h3>Let's talk! ✨</h3>
     <p>
-        I'm always up for talking about data pipelines, geospatial ML, RAG systems, or
-        why a model's validation curve looks a little too good to be true. Reach out,
-        I'd love to hear from you.
+        I'm actively looking for data science and ML engineering opportunities, and
+        I'm always excited to connect, whether that's about a role, a collaboration,
+        a new tool worth learning, or just a good problem to think through together.
+        No idea is too early-stage, no question too small. Reach out, I'd genuinely
+        love to hear from you!
     </p>
     <div class="contact-links">
         <a class="btn btn-primary" href="{SOCIAL['email']}">✉️ {SOCIAL['email_display']}</a>

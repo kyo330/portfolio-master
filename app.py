@@ -15,7 +15,7 @@ st.set_page_config(
 # 📄 RESUME PDF: resolved relative to app.py regardless of working dir
 # ════════════════════════════════════════════════════════════════════════
 _APP_DIR = pathlib.Path(__file__).parent
-PDF_PATH = _APP_DIR / "assets" / "Priyadharshini_Ramesh_Kumar.pdf"
+PDF_PATH = _APP_DIR / "assets" / "Priyadharshini_R_Resume.pdf"
 RESUME_URL = "?page=resume"   # all resume buttons point here
 
 # ════════════════════════════════════════════════════════════════════════
